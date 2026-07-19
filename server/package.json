@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Full stack mern application",
   "main": "server.js",
-  "type" : "module",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "mr.omkar",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongoose": "^9.7.0"
+    "mongoose": "^9.7.0",
+    "nodemon": "^3.1.14"
   }
 }
