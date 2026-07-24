@@ -93,35 +93,13 @@ export const logoutUser = async(req,res)  => {
     }
 }
 
-export const protect = async(req,res,next) =>{
+export const getProfile = async(req,res) =>{
     try {
-        let token;
-
-        if(req.headers.authorization && req.headers.authorization.startWith("Bearer")){
-            token = req.headers.authorization.split(" ")[1];
-        }
-
-        if(!token) {
-            return res.status(401).json({success:false, message:"Not authorized, no token"});
-        }
-
-        const decoded = jwt.verify(token,process.env.JWT_SECRET);
-
-        req.user = await user.findById(decided.id).select("-password");
-        next();
-
+        res.status(200).json({success : true, data:req.user});
     } catch (error) {
-        res.status(500).json({success:false, message:"Not authorized, token failed"});
+        res.status(500).json({success: false, message : error.message});
     }
 }
-
-// export const getProfile = async(req,res) =>{
-//     try {
-        
-//     } catch (error) {
-//         res.status(500).json({success: false, message : error.message});
-//     }
-// }
 
 
 
