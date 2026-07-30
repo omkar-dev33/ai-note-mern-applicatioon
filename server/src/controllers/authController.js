@@ -1,7 +1,7 @@
 import Auth from '../models/authModel.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-
+// import {a} from ''
 
 export const registerUser = async(req,res)  => {
     try {
