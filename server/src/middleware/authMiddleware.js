@@ -13,7 +13,7 @@ export const protect = async(req,res,next) =>{
         if(!token) {
             return res.status(401).json({success:false, message:"Not authorized, no token"});
         }
-        console.log("Protect middleware hit"); 
+        // console.log("Protect middleware hit"); 
 
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
         // console.log("secrete", process.env.JWT_SECRET);

@@ -23,12 +23,41 @@ export const registerRules = [
 
 ]
 
-export const registerValidate = (req,res,next) =>{
-  const error = validationResult(req);
+// Login validator
+
+export const loginRules = [
+
+  body("email")
+  .trim()
+  .isEmail()
+  .withMessage("Please enter valid email")
+  .normalizeEmail(),
+
+  body("password")
+  .isLength({min:6})
+  .withMessage("Password must be at least 6 characters"),
+
+  
+]
+
+export const Validator = (req,res,next)=> {
+  const error = validationResult(req)
+
   if(!error.isEmpty()){
+
     return res.status(400).json({error:error.array(),
 
     })
+
   }
   next();
 }
+
+
+
+
+
+
+
+
+
