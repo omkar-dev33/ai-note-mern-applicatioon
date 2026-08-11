@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import connectDB from './src/config/db.js'
 import notes from './src/routes/noteRoutes.js'
 import authRoute from './src/routes/authRoutes.js';
-
+import errorHandler from '../server/src/middleware/errorHandler.js';
 dotenv.config();
 connectDB();
 
@@ -13,6 +13,8 @@ app.use(express.json());
 
 app.use("/api/auth",authRoute);
 app.use("/api/note",notes);
+
+app.use(errorHandler);
 
 app.get("/", (req, res) => {
     res.send("API running...");

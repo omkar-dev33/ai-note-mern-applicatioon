@@ -3,16 +3,19 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 // import {a} from ''
 
-export const registerUser = async(req,res)  => {
+export const registerUser = async(req,res,next)  => {
     try {
         const {first_name, last_name, email, password} = req.body;
 
         const existedUser  = await Auth.findOne({email});
 
         if(existedUser){
-            return res.status(400).json({
-                message:`User already existed`
-            });
+            const error = new Error(`User already existed`);
+            error.status = 400;
+            throw error;
+            // return res.status(400).json({
+            //     message:`User already existed`
+            // });
         }
        
         const hashPassword = await bcrypt.hash(password,10);
@@ -36,29 +39,37 @@ export const registerUser = async(req,res)  => {
             first_name:user.first_name,
             last_name:user.last_name,
             email : user.email,
-            password : hashPassword,
+            // password : hashPassword,
             token
         })
 
     } catch (error) {
-        res.status(500).json({success : false, message: error.message});
+        // console.log("Calliing next");
+        next(error);
+        // res.status(500).json({success : false, message: error.message});
     }
 }
 
-export const loginUser = async(req,res)  => {
+export const loginUser = async(req,res,next)  => {
     try {
         const {email,password} = req.body;
         
         const user = await Auth.findOne({email});
 
         if(!user){
-            return res.status(401).json({ message: "Invalid Credentials"});
+            const error = new Error(`Invalid Credentials`);
+            error.status = 401;
+            throw error;
+            // return res.status(401).json({ message: "Invalid Credentials"});
         }
 
         const match = await bcrypt.compare(password,user.password);
 
         if(!match){
-            return res.status(401).json({message :"Invalid Credentials"});
+            const error = new Error(`Invalid Credentials`);
+            error.status = 401;
+            throw error;
+            // return res.status(401).json({message :"Invalid Credentials"});
         }
 
         const generateToken = (id) =>{
@@ -74,11 +85,12 @@ export const loginUser = async(req,res)  => {
         });
 
     } catch (error) {
-        res.status(500).json({success : false, message: error.message});
+        next(error);
+        // res.status(500).json({success : false, message: error.message});
     }
 }
 
-export const logoutUser = async(req,res)  => {
+export const logoutUser = async(req,res,next)  => {
     try {
         res.clearCookie("token", {
             httpOnly: true,
@@ -89,18 +101,29 @@ export const logoutUser = async(req,res)  => {
         res.status(200).json({message : "Logout successfully"});
 
     } catch (error) {
-        res.status(500).json({success : false, message: error.message});
+        next(error);
+        // res.status(500).json({success : false, message: error.message});
     }
 }
 
-export const getProfile = async(req,res) =>{
+export const getProfile = async(req,res,next) =>{
     try {
         res.status(200).json({success : true, data:req.user});
     } catch (error) {
-        res.status(500).json({success: false, message : error.message});
+        // console.log("Calliing next");
+        next(error);
+        // res.status(500).json({success: false, message : error.message});
     }
 }
 
+const errorHandler = (err,req,res,next) =>{
+    res.status(err.status || 500).json({
+        success:false,
+        message: err.message || "Internal Server Error"
+    });
+};
+
+export default errorHandler;
 
 
 
