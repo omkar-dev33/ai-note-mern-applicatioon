@@ -4,10 +4,15 @@ import connectDB from './src/config/db.js'
 import notes from './src/routes/noteRoutes.js'
 import authRoute from './src/routes/authRoutes.js';
 import errorHandler from '../server/src/middleware/errorHandler.js';
+import helmet from 'helmet';
+
+const app = express();
+
 dotenv.config();
 connectDB();
 
-const app = express();
+app.use(helmet());
+
 
 app.use(express.json());
 
