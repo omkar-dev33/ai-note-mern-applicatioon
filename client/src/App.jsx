@@ -1,11 +1,17 @@
 import './App.css'
 import React, {useState} from 'react'
+import {Route,Routes} from 'react-router-dom';
+import Login from '../src/pages/Login.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [Login,setLogin] = useState();s
 
   return (<>
-  <h3 className="">React</h3>
+      <Routes>
+        <Route path="/" element={<Login/>}/>
+        {/* <Route path="/login" element={login}/> */}
+      </Routes>
+    
   </>)
 }
 
