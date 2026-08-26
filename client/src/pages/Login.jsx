@@ -38,11 +38,11 @@ const Login = () => {
             </div>
 
             {/* <la htmlFor="" ></la> */}
-            <button className="flex justify-center items-center border rounded px-10 py-[1px] ">Login</button>
+            <button className="flex justify-center items-center border rounded px-10 py-[1px] cursor-pointer">Login</button>
 
             <div className="flex justify-center items-center gap-2">
                 <p className="text-md">Don't have an account?</p>
-             <p className=""  onClick={()=>{navigate('/register')}} > Create Account</p>
+             <p className="hover:underline cursor-pointer"  onClick={()=>{navigate('/register')}} > Create Account</p>
             </div>
         </form>
         
