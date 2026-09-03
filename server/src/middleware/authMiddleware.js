@@ -11,7 +11,7 @@ export const protect = async(req,res,next) =>{
         // console.log("Header received:", req.headers.authorization);
 
         if(!token) {
-            return res.status(401).json({success:false, message:"Not authorized, no token"});
+            return res.status(401).json({success:false, message:"Not authorized, No token"});
         }
         // console.log("Protect middleware hit"); 
 
