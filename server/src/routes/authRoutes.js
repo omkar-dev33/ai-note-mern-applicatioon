@@ -9,7 +9,7 @@ import limiter from '../middleware/rateLimit.js'
 const router = express.Router();
 
 router.post("/register",registerRules,Validator, registerUser);
-router.post("/login",limiter,loginRules,Validator,loginUser);
+router.post("/",limiter,loginRules,Validator,loginUser);
 router.post("/logout",logoutUser);
 router.get("/profile",protect,getProfile);
 

@@ -11,6 +11,7 @@ export const registerUser = async(req,res,next)  => {
         if(existedUser){
             const error = new Error(`User already existed`);
             error.status = 400;
+            console.log('User exist');
             throw error;
             // return res.status(400).json({
             //     message:`User already existed`

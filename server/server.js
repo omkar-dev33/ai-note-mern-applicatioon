@@ -5,11 +5,18 @@ import notes from './src/routes/noteRoutes.js'
 import authRoute from './src/routes/authRoutes.js';
 import errorHandler from '../server/src/middleware/errorHandler.js';
 import helmet from 'helmet';
+import cors from 'cors';
 
 const app = express();
 
 dotenv.config();
 connectDB();
+
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}
+));
 
 app.use(helmet());
 
