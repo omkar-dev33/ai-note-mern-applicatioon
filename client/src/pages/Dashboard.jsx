@@ -38,7 +38,7 @@ const Dashboard = () => {
                 <div className="h-[190px] w-[220px] bg-gray-600 border rounded-xl flex flex-col px-4">
                     <div className="flex justify-between items-center mt-4">
                         <img src={logo} alt="logo" className="w-10 " />
-                        <div className="">+12%</div>
+                        <button className="text-green-500 bg-gray-700 rounded-md px-2  text-sm">+12%</button>
                     </div>
 
                     <p className="text-gray-400 text-[20px] font-bold">Notes</p>
@@ -52,7 +52,7 @@ const Dashboard = () => {
                 <div className="h-[190px] w-[220px] bg-gray-600 border rounded-xl flex flex-col px-4">
                     <div className="flex justify-between items-center mt-4">
                         <img src={logo} alt="logo" className="w-10 " />
-                        <div className="">+12%</div>
+                        <button className="text-green-500 bg-gray-700 rounded-md px-2  text-sm">+12%</button>
                     </div>
 
                     <p className="text-gray-400 text-[20px] font-bold">Notes</p>
@@ -63,6 +63,25 @@ const Dashboard = () => {
                     </div>                    
                 </div>
 
+
+            </section>
+
+            <section></section>
+            <section>
+
+                <div className="">Quick Actions</div>
+                <div className="">Jump into your most used tools</div>
+
+                <div className="">
+                    <div className="">
+                        <span className="">+</span>
+                        New Note
+                    </div>
+                    
+                    <div className="">Ask AI</div>
+                    <div className="">Search</div>
+                    
+                </div>
 
             </section>
 
