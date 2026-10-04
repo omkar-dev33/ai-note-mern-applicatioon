@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegBell } from "react-icons/fa";
 import logo from '../assets/doc-success-svgrepo-com.svg';
+import { AreaChart } from "../component/AreaChart.jsx";
 
 const Dashboard = () => {
 
@@ -66,10 +67,25 @@ const Dashboard = () => {
 
             </section>
 
-            <section></section>
-            <section>
+            <section className="bg-white">
 
-                <div className="">Quick Actions</div>
+                <div className="">
+                    <div className="">
+                        <h3 className="">Daily Productivity</h3>
+                        <p className="">Your note activity this week</p>
+                    </div>
+                    <span className="">This week</span>
+                </div>
+
+                <div className="">
+                    <AreaChart/>
+                </div>
+
+            </section>
+
+            <section className="bg-white">
+
+                <div className="text-red-400">Quick Actions</div>
                 <div className="">Jump into your most used tools</div>
 
                 <div className="">
