@@ -1,8 +1,7 @@
 import React from "react";
 import { FaRegBell } from "react-icons/fa";
 import logo from '../assets/doc-success-svgrepo-com.svg';
-import { AreaChart } from "../component/AreaChart.jsx";
-
+import Areachart from '../component/AreaChart.jsx'
 const Dashboard = () => {
 
     return(
@@ -78,7 +77,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="">
-                    <AreaChart/>
+                    <Areachart/>
                 </div>
 
             </section>
